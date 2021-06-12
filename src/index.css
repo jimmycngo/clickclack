@@ -1,13 +1,133 @@
+html {
+  background-color: rgb(50, 52, 55);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Segoe UI";
+  font-weight: bold;
+  /* font-size: x-large; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#navbar {
+  width: 100%;
+  height: 10em;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  color:rgb(0, 150, 35);
+}
+
+#maincontainer {
+  width: 100%;
+  padding-top: 10%;
+  max-width: 1500px;
+}
+
+#mainbody {
+  width: 80%;
+  height: 210px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "inner-div";
+  position: relative;
+}
+
+#textcontainer {
+  height: 210px;
+  width: stretch;
+  grid-area: inner-div;
+  overflow: hidden;
+  font-size: 30px;
+  padding-left: 15px;
+  color: rgb(100, 102, 105);
+  padding-top: 10px;
+
+}
+
+#typehere {
+  height: 210px;
+  width: stretch;
+  grid-area: inner-div;
+}
+
+#inputbox {
+  width: 100%;
+  height: 210px;
+  font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.048);
+  grid-area: inner-div;
+  font-family: "Segoe UI";
+  font-weight: bold;
+  color:rgba(25, 25, 204, 0);
+  resize: none;
+  /* padding-top: 29px; */
+  overflow: hidden;
+  border-radius: 10px;
+  outline: none;
+}
+
+#inputbox::selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.incorrect {
+  color: rgb(255, 72, 72);
+}
+
+.correct {
+  color: rgb(243, 243, 243);
+}
+
+#words {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+#letters {
+  display:flex;
+  flex-wrap: wrap;
+  margin-right: 8.3px;
+}
+
+#start {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: rgb(100, 102, 105);
+  height: 220px;
+  width: stretch;
+  grid-area: inner-div;
+  position: absolute;
+  top: 0px;
+  left:3px;
+  font-family: "Segoe UI";
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.hide {
+  color: transparent !important;
 }
