@@ -1,4 +1,4 @@
-Created a typeing game webapp using redux as a framework.
+Created a typing game webapp using redux as a framework.
 
 ## Available Scripts
 
