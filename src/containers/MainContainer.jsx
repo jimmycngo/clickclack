@@ -13,6 +13,8 @@ const mapStateToProps = state => ({
     lastLetter: state.reducer.lastLetter,
     index: state.reducer.index,
     box: state.reducer.box,
+    modeApi: state.reducer.modeApi,
+    mode: state.reducer.mode,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,7 +33,7 @@ class MainContainer extends Component {
     }
     
     fetchDisplayText() {
-        return (fetch('https://api.quotable.io/random')
+        return (fetch(this.props.modeApi[this.props.mode])
         .then(data => data.json())
         .then(data => this.props.getDisplayText(data))
         .catch((err) => console.log('bruv fetch failed',err))

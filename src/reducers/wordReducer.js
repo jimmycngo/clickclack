@@ -6,7 +6,8 @@ const initialState = {
  lastLetter: '',
  index: 0,
  box: '',
- modeList: ['quote', 'breakingbad', 'anime'],
+ modeList: ['quote', 'anime', 'lotr'],
+ modeApi:['https://api.quotable.io/random','https://animechan.vercel.app/api/random', 'https://lotr-random-quote-api.herokuapp.com/api/quote'],
  mode: 0,
  currentMode: 'quote',
 };
@@ -36,12 +37,19 @@ const wordReducer = (state = initialState, action) => {
     }
     case types.DISPLAY_TEXT: {
       const displayText = [];
-      console.log(action.payload['content'])
-      for(const element of action.payload['content']) {
-        displayText.push(element);
+      //for random quote api
+      if(state.mode === 0){
+        console.log(action.payload['content'])
+        for(const element of action.payload['content']) {
+          displayText.push(element);
+        }
+      } else {
+        console.log(action.payload['quote'])
+        for(const element of action.payload['quote']) {
+          displayText.push(element);
+        }
       }
       console.log('heres what i saved in displayText', displayText);
-      // const displayText = action.payload['content']
       return {
         ...state,
         displayText
@@ -89,8 +97,8 @@ const wordReducer = (state = initialState, action) => {
       }
     }
     case types.CHANGE_MODE: {
-      let mode = state.mode + 1;
-      let currentMode = state.modeList[mode%state.modeList.length];
+      let mode = (state.mode + 1)%state.modeList.length;
+      let currentMode = state.modeList[mode];
 
       return{
         ...state,

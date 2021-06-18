@@ -26,9 +26,25 @@ body {
 #header {
   display: flex;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
-  color:rgb(0, 150, 35);
+  padding-left: 15px;
+  padding-right: 15px;
+  color:rgb(0, 129, 30);
+}
+
+h1{
+  color: rgb(209, 209, 209);
+}
+
+h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h6 {
+  color: rgb(0, 100, 23);
+  margin: 0px;
 }
 
 #maincontainer {

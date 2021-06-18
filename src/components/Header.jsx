@@ -1,26 +1,39 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import React, { Component } from 'react';
+
 import * as actions from '../actions/actions';
+import { connect } from 'react-redux';
 
-const Header = props => {
+const mapStateToProps = state => ({
+  mode: state.reducer.mode,
+  modeList: state.reducer.modeList,
+});
 
-const mode = useSelector(state => state.mode)
-const dispatch = useDispatch()
 
+const mapDispatchToProps = dispatch => ({
+  changeMode: () => dispatch(actions.changeModeActionCreator()),
+});
 
+class Header extends Component {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+  }
 
-  return(  
-    <div id='header' >
+  render() {
+    return(
+      <div id='header' >
       <h1>clickclack</h1>
-      <h3>{'settings'}</h3>
-      {/* <button 
-      onClick={() =>{
-         use(dispatch(actions.changeModeActionCreator()))
-        }
-      }>mode</button> */}
+      <h3 onClick={() =>{
+        this.props.changeMode()
+        document.getElementById('start').classList.remove('hide')
+      }}>
+        {this.props.modeList[this.props.mode]}
+        <h6>click to change mode</h6>
+      </h3>
     </div>
-  )
-};
+    );
+  }
 
-export default Header;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
