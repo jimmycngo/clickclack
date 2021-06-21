@@ -28,7 +28,7 @@ class Header extends Component {
         document.getElementById('start').classList.remove('hide')
       }}>
         {this.props.modeList[this.props.mode]}
-        <h6>click to change mode</h6>
+        <p id='clicktochangemode'>click to change mode</p>
       </h3>
     </div>
     );

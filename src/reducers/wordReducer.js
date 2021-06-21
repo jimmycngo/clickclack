@@ -2,7 +2,7 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
  currentLetter: '',
- displayText: '',
+ displayText: [],
  lastLetter: '',
  index: 0,
  box: '',
@@ -59,20 +59,18 @@ const wordReducer = (state = initialState, action) => {
       return {
         ...state,
         currentLetter: '',
-        displayText: '',
+        displayText: [],
         lastLetter: '',
         index: 0,
         box: '',
       }
     }
     case types.TEXT_CORRECT: {
-      console.log('CORRECT')
       return {
         ...state,
       }
     }
     case types.TEXT_INCORRECT: {
-      console.log('INCORRECT')
       return {
         ...state,
       }
@@ -103,7 +101,7 @@ const wordReducer = (state = initialState, action) => {
       return{
         ...state,
         currentLetter: '',
-        displayText: '',
+        displayText: [],
         lastLetter: '',
         index: 0,
         box: '',

@@ -42,7 +42,7 @@ h3 {
   align-items: flex-end;
 }
 
-h6 {
+#clicktochangemode {
   color: rgb(0, 100, 23);
   margin: 0px;
 }
@@ -146,4 +146,27 @@ h6 {
 
 .hide {
   color: transparent !important;
+}
+
+#wpm {
+  color: rgb(151, 151, 151);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#statdescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#statvalue {
+  color: rgb(0, 100, 23);
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

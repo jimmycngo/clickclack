@@ -6,6 +6,7 @@ import * as actions from '../actions/actions';
 import TextContainer from './TextContainer.jsx'
 import Word from '../components/Word.jsx'
 import Letter from '../components/Letter.jsx'
+import Wpm from '../components/Wpm.jsx'
 
 const mapStateToProps = state => ({
     currentLetter: state.reducer.currentLetter,
@@ -30,8 +31,11 @@ class MainContainer extends Component {
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
       super(props);
+      this.time = 0;
+      this.stats = [0,0,0,0];
     }
     
+
     fetchDisplayText() {
         return (fetch(this.props.modeApi[this.props.mode])
         .then(data => data.json())
@@ -75,6 +79,12 @@ class MainContainer extends Component {
     }
       //checks for length when done with quote
       if(this.props.index === this.props.displayText.length && this.props.box.length !== 0) {
+        const numIncorrect = document.getElementsByClassName('incorrect').length
+        const totalTime = (Date.now() - this.time) / 1000;
+        const grossWpm = Math.floor((this.props.displayText.length / 5)/ (totalTime / 60));
+        const netWpm = Math.floor(grossWpm - numIncorrect/(totalTime / 60));
+        const accuracy = Math.floor(100 * (this.props.displayText.length - numIncorrect) / this.props.displayText.length)
+        this.stats = [Math.floor(totalTime), grossWpm, netWpm, accuracy]
         document.getElementById("inputbox").value=''
         this.props.clearText();
         this.fetchDisplayText();
@@ -90,20 +100,24 @@ class MainContainer extends Component {
           </div>
           <div id='typehere'>
             <TypeHere
-            currentText={this.props.currentText}
-            deleteText={this.props.deleteText}
+              currentText={this.props.currentText}
+              deleteText={this.props.deleteText}
             />
             <button
-            href='http://localhost:3000/'
             id='start'
             onClick={
               () => {this.fetchDisplayText();
-              this.props.clearText();
-              document.getElementById("inputbox").value=''
-              document.getElementById('start').classList.add('hide')
+                this.time = Date.now();
+                this.props.clearText();
+                document.getElementById("inputbox").value=''
+                document.getElementById('start').classList.add('hide')
             }}>click here to start</button>
           </div>
-          
+          <div id='wpm'>
+            <Wpm
+              stats={this.stats}
+            />
+          </div>
         </div>
       );
     }
