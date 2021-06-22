@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.join(__dirname, '/build'),
         filename: 'bundle.js',
     },
     mode: process.env.NODE_ENV,
@@ -12,12 +12,13 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'] //preset configs for babel
+                        presets: ['@babel/preset-env', '@babel/preset-react'], //preset configs for babel
+                        plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
                     },
                 },
             },
@@ -33,4 +34,7 @@ module.exports = {
             '/': 'http://localhost:3000',
         },
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+      },
 };

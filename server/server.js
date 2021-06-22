@@ -11,6 +11,10 @@ const client_secret = process.env.GITHUB_CLIENT_SECRET
 
 console.log({client_id,client_secret});
 
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/bundle.js'))
+})
+
 app.get('/index.js', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.js'))
 })

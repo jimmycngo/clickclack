@@ -77,7 +77,7 @@ h3 {
 
 #typehere {
   height: 210px;
-  width: stretch;
+  width: 100%;
   grid-area: inner-div;
 }
 
@@ -134,7 +134,7 @@ h3 {
   outline: none;
   color: rgb(100, 102, 105);
   height: 220px;
-  width: stretch;
+  width: 100%;
   grid-area: inner-div;
   position: absolute;
   top: 0px;
