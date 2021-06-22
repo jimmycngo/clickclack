@@ -67,7 +67,7 @@ class MainContainer extends Component {
 
     render() {
       //checks if current letter is correct
-      console.log('currentLetter',this.props.currentLetter,'last',this.props.lastLetter,this.props.index-1)
+      // console.log('currentLetter',this.props.currentLetter,'last',this.props.lastLetter,this.props.index-1)
       if(this.props.index !== 0) {
       if(this.props.currentLetter !== this.props.lastLetter && this.props.lastLetter !== ' ') {
         document.getElementById(this.props.index-1).classList.add('incorrect')
@@ -87,7 +87,7 @@ class MainContainer extends Component {
         this.stats = [Math.floor(totalTime), grossWpm, netWpm, accuracy]
         document.getElementById("inputbox").value=''
         this.props.clearText();
-        this.fetchDisplayText();
+        this.fetchDisplayText().then(() => this.time = Date.now())
       }
 
       return(

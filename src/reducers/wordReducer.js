@@ -19,13 +19,12 @@ const wordReducer = (state = initialState, action) => {
       let lastLetter = state.lastLetter;
       let index = state.index;
       let box = state.box;
-      console.log(action.payload.length,state.index)
+      // console.log(action.payload.length,state.index)
       if(action.payload.length === state.index + 1) {
       currentLetter = action.payload.slice(-1);
       lastLetter = state.displayText[index]
       index++
       box = action.payload;
-      console.log('incremented')
       }
       return {
         ...state,
@@ -49,7 +48,7 @@ const wordReducer = (state = initialState, action) => {
           displayText.push(element);
         }
       }
-      console.log('heres what i saved in displayText', displayText);
+      //console.log('heres what i saved in displayText', displayText);
       return {
         ...state,
         displayText

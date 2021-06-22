@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { connect, useSelector } from 'react-redux';
-
-
-
   
 class TextContainer extends Component {
     // eslint-disable-next-line no-useless-constructor
