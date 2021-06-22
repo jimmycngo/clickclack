@@ -16,7 +16,6 @@ const cookie_secret = process.env.COOKIE_SECRET;
 
 app.use(cookieSession({
   secret: cookie_secret,
-  keys: 'howdy',
   })
 );
 

@@ -2,14 +2,14 @@ const models = require('../models/userModel');
 
 const userController = {};
 
-userController.getCharacters = (req, res, next) => {
+userController.getUsers = (req, res, next) => {
   models.Person.find({})
     .then(data => res.locals.username = data)
     .then(() => next())
-    .catch(err => console.log('error', err));
+    .catch(err => console.log('error getting users', err));
 };
 
-userController.addCharacter = (req, res, next) => {
+userController.addUser = (req, res, next) => {
   models.Person.create({
     username: req.body.username, 
     wpm: req.body.wpm, 
@@ -20,7 +20,7 @@ userController.addCharacter = (req, res, next) => {
       res.locals.username = username;
       return next();
     } catch {
-      console.log('error on the add user', err);
+      console.log('error adding a user', err);
     } 
   });
 };
