@@ -8,8 +8,14 @@ function App() {
       <div id='navbar'>
         <HeaderContainer />
       </div>
+      <div>
+        
+      </div>
       <div id='maincontainer'>
         <MainContainer />
+      </div>
+      <div id='login'>
+        <a href="/user/signin">sign in</a>
       </div>
     </div>
   );
