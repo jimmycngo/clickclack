@@ -21,13 +21,13 @@ function App() {
       <h4>welcome back {document.cookie.split('=')[1]}</h4>
       <a href="/statsPage">check out your stats</a>
       </div>
-      <div id='signout'
+      <a href= '/' id='signout'
       onClick={
         () => {
           document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
       }
-      >sign out</div>
+      >sign out</a>
     </div>
   );
 }
