@@ -171,8 +171,19 @@ h3 {
   align-items: center;
 }
 
-#login {
+#signin {
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
+
+#signout {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+a:visited { 
+  text-decoration: none; 
+  color:rgb(151, 151, 151);
+ }

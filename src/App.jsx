@@ -14,9 +14,16 @@ function App() {
       <div id='maincontainer'>
         <MainContainer />
       </div>
-      <div id='login'>
-        <a href="/user/signin">sign in</a>
+      <div id='signin'>
+        <a href="/signin">sign in</a>
       </div>
+      <div id='signout'
+      onClick={
+        () => {
+          document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+      }
+      >sign out</div>
     </div>
   );
 }
