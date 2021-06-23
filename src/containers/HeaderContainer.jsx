@@ -22,8 +22,7 @@ class Header extends Component {
   render() {
     return(
       <div id='header' >
-      <h1>clickclack</h1>
-      <h2>welcome back {document.cookie.split('=')[1]}</h2>
+      <a id='title' href='/'>clickclack</a>
       <h3 onClick={() =>{
         this.props.changeMode()
         document.getElementById('start').classList.remove('hide')

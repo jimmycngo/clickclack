@@ -9,13 +9,17 @@ function App() {
         <HeaderContainer />
       </div>
       <div>
-        
+
       </div>
       <div id='maincontainer'>
         <MainContainer />
       </div>
       <div id='signin'>
         <a href="/signin">sign in</a>
+      </div>
+      <div id='stats'>
+      <h4>welcome back {document.cookie.split('=')[1]}</h4>
+      <a href="/statsPage">check out your stats</a>
       </div>
       <div id='signout'
       onClick={

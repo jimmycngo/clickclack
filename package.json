@@ -12,6 +12,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "chart.js": "^3.3.2",
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
@@ -33,24 +34,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\"",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

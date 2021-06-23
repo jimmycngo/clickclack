@@ -1,15 +1,15 @@
-// const fetch = require('node-fetch')
-// const cookieSession = require('cookie-session')
 const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
-// const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
 const sessionController = require('./controllers/sessionController');
+
+//must use this to start server
+//sudo service mongodb start
 
 // const client_id = process.env.GITHUB_CLIENT_ID;
 // const client_secret = process.env.GITHUB_CLIENT_SECRET;
@@ -53,6 +53,19 @@ app.post('/signin', userController.verifyUser, (req, res) => {
   console.log('im back in signin', req.body)
   res.cookie('username', req.body.username)
   res.redirect('/')
+});
+
+app.get('/statsPage', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/statsPage.html'))
+});
+
+app.get('/getStats', userController.getAllUsers, (req,res) => {
+  console.log(res.locals.users)
+  res.json(res.locals.users)
+})
+
+app.put('/updatestats', userController.updateStats, (req, res) => {
+  console.log('updated')
 });
 
 app.get('/', (req, res) => {

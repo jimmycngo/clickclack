@@ -42,6 +42,10 @@ h3 {
   align-items: flex-end;
 }
 
+h4{
+  color: rgb(0, 100, 23);
+}
+
 #clicktochangemode {
   color: rgb(0, 100, 23);
   margin: 0px;
@@ -49,7 +53,7 @@ h3 {
 
 #maincontainer {
   width: 100%;
-  padding-top: 10%;
+  padding-top: 5%;
   max-width: 1500px;
 }
 
@@ -183,7 +187,58 @@ h3 {
   left: 10px;
 }
 
+#stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
 a:visited { 
-  text-decoration: none; 
+  text-decoration: none !important; 
   color:rgb(151, 151, 151);
  }
+
+.chartContainer {
+   display: flex;
+   justify-content: center;
+   height:700px
+}
+
+#back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+}
+
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgb(209, 209, 209);
+  font-size: xx-large;
+  padding-left: 15px;
+
+}
+
+.loginstitle {
+  padding-top: 22px !important;
+}
+
+#myChart {
+  background-color: rgba(255, 255, 255, 0.01);
+}

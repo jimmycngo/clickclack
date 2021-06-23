@@ -24,7 +24,6 @@ userController.getAllUsers = (req, res, next) => {
 userController.createUser = (req, res, next) => {
   // write code here
   console.log('req.body', req.body)
-
   User.create({username:req.body.username, password: req.body.password})
     .then(() => res.redirect('/'))
     .catch((err) => console.log('whoops an error creating user', err))
@@ -41,6 +40,26 @@ userController.verifyUser = (req, res, next) => {
     .then(data => {if(req.body.password === data[0].password) {
       return next();
     }
+    })
+    .catch(() => res.redirect('/signup'))
+};
+
+userController.updateStats = (req, res, next) => {
+  console.log(req.body)
+  User.findOneAndUpdate(
+    {username:req.body[4]}, 
+    {$push: {date:[req.body[0]], wpm:[req.body[1]], netWpm:[req.body[2]], accuracy:[req.body[3]]}},
+    {upsert: true, new: true}
+    )
+  .then(data => console.log('did the update', data))
+  .catch((err) => console.log('error updating stats', err))
+};
+
+userController.getStats = (req, res, next) => {
+  // write code here
+  User.find({username:req.body.username})
+    .then(data => {
+      console.log(data)
     })
     .catch(() => res.redirect('/signup'))
 };

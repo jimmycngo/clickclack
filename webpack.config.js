@@ -29,7 +29,9 @@ module.exports = {
         ],
     },
     devServer: {
+        contentBase: path.join(__dirname, '/build'),
         publicPath: '/build/',
+        hot: true,
         proxy: {
             '/': 'http://localhost:3000',
         },

@@ -82,9 +82,21 @@ class MainContainer extends Component {
         const numIncorrect = document.getElementsByClassName('incorrect').length
         const totalTime = (Date.now() - this.time) / 1000;
         const grossWpm = Math.floor((this.props.displayText.length / 5)/ (totalTime / 60));
-        const netWpm = Math.floor(grossWpm - numIncorrect/(totalTime / 60));
+        const netWpm = Math.floor(grossWpm - (numIncorrect/(totalTime / 60)));
         const accuracy = Math.floor(100 * (this.props.displayText.length - numIncorrect) / this.props.displayText.length)
-        this.stats = [Math.floor(totalTime), grossWpm, netWpm, accuracy]
+        this.stats = [Math.floor(totalTime), grossWpm, netWpm, accuracy, document.cookie.split('=')[1]]
+        fetch('/updatestats', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'Application/JSON'
+          },
+          body: JSON.stringify([new Date().toISOString().split('T')[0], grossWpm, netWpm, accuracy, document.cookie.split('=')[1]])
+        })
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(err => console.log('Updating stats error in maincontainer: ERROR: ', err));
         document.getElementById("inputbox").value=''
         this.props.clearText();
         this.fetchDisplayText().then(() => this.time = Date.now())

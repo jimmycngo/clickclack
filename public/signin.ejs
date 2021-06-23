@@ -2,14 +2,20 @@
 <head>
   <meta charset="UTF-8">
   <title>clickclack sign in</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-  Login
-  <form method="POST" action='/signin'>
-    <input name="username" type="text" placeholder="username"></input>
-    <input name="password" type="password" placeholder="password"></input>
-    <input type='submit' value="signin">
-  </form>
-  <a href='./signup'>Sign up</a>
+  <header id='header'>
+    <a class='loginstitle' id='title' href='/'>clickclack</a>
+  </header>
+  <div id='login'>
+    <h1>login</h1>
+    <form method="POST" action='/signin'>
+      <input name="username" type="text" placeholder="username"></input>
+      <input name="password" type="password" placeholder="password"></input>
+      <input type='submit' value="Sign In">
+    </form>
+    <a href='./signup'>Sign up</a>
+  </div>
 </body>
 </html>

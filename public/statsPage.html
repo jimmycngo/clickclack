@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="clickclack stats"
+    />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>clickclack stats</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class='chartContainer'>
+        <canvas id='myChart'></canvas>
+    </div>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+        Chart.defaults.font.size = 14;
+
+
+
+        let stats = [];
+        fetch('/getStats')
+          .then(data => data = data.json())
+          // .then(data => console.log(data))
+          .then(data => data.forEach((doc) => {
+            if(document.cookie.split('=')[1] === doc.username) {
+              stats = [doc.date, doc.wpm, doc.netWpm, doc.accuracy]
+            }
+          }))
+          .then(() =>{
+            console.log(stats)
+            let statChart = new Chart(myChart, {
+              type: 'line',
+              data: {
+                  labels: stats[0],
+                  datasets: [{
+                      label: 'wpm',
+                      data: stats[1],
+                      backgroundColor: 'rgb(0, 100, 23)',
+                      borderColor: 'rgb(0, 100, 23)',
+                      yAxisID: 'y1',
+                  },
+                  {
+                      label: 'netWpm',
+                      data: stats[2],
+                      backgroundColor: 'rgb(255, 72, 72)',
+                      borderColor: 'rgb(255, 72, 72)',
+                      yAxisID: 'y1',
+                  },
+                  {
+                      label: 'accuracy',
+                      data: stats[3],
+                      backgroundColor: 'rgb(100, 102, 105)',
+                      borderColor: 'rgb(100, 102, 105)',
+                      yAxisID: 'y2',
+                  }]
+              },
+              options: {
+                animation: {
+                },
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'your clickclack stats',
+                    color: 'rgb(209, 209, 209)',
+                    font: {
+                          size: 20
+                    },
+                    padding: {
+                      top: 50,
+                      bottom: 30
+                    }
+                  },
+                  
+                },
+                responsive: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false,
+                },
+                stacked: false,
+                scales: {
+                  y1: {
+                    title: 'wpm',
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min:0,
+                  },
+                  y2: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min:0,
+                    grid: {
+                      drawOnChartArea: false,
+                    },
+                  },
+                }
+              },
+            });
+           })
+          .catch((err) => console.log('error getting stats', err))
+    </script>
+    <a id='back' href= '/'>back to clickclack</a>
+  </body>
+</html>
