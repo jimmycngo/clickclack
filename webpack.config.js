@@ -17,6 +17,10 @@ module.exports = {
         filename: 'bundle.js',
     },
     // plugins: [new MiniCssExtractPlugin()],
+    performance: {
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
     module: {
         rules: [
             {
