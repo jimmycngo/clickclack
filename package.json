@@ -32,7 +32,7 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "start": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\"",
+    "start": "concurrently \"cross-env NODE_ENV=production webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\"",
     "build": "concurrently \"cross-env NODE_ENV=production webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\"",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\""
   },
