@@ -195,15 +195,10 @@ h4{
   bottom: 10px;
 }
 
-a, a:hover, a:focus, a:active {
+a, a:hover, a:focus, a:active a:visited {
   text-decoration: none !important;
   color: rgb(151, 151, 151);
 }
-
-a:visited { 
-  text-decoration: none !important; 
-  color:rgb(151, 151, 151);
- }
 
 .chartContainer {
    display: flex;
