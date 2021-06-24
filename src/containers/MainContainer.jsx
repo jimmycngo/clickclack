@@ -79,6 +79,17 @@ class MainContainer extends Component {
     }
       //checks for length when done with quote
       if(this.props.index === this.props.displayText.length && this.props.box.length !== 0) {
+        const wrongdivs = document.getElementsByClassName('incorrect')
+        const wrongLetters = [];
+        for(let i = 0; i < wrongdivs.length; i++) {
+          wrongLetters.push(wrongdivs[i].innerHTML)
+        }
+        // console.log(wrongLetters)
+
+        // if(wrongLetters.length !== 0) {
+        //   fetch()
+        // }
+
         const numIncorrect = document.getElementsByClassName('incorrect').length
         const totalTime = (Date.now() - this.time) / 1000;
         const grossWpm = Math.floor((this.props.displayText.length / 5)/ (totalTime / 60));

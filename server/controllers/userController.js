@@ -25,7 +25,7 @@ userController.createUser = (req, res, next) => {
   // write code here
   console.log('req.body', req.body)
   User.create({username:req.body.username, password: req.body.password})
-    .then(() => res.redirect('/'))
+    .then(() => res.redirect('/signin'))
     .catch((err) => console.log('whoops an error creating user', err))
 };
 

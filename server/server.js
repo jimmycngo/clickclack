@@ -5,11 +5,19 @@ const path = require('path');
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 const userController = require('./controllers/userController');
-const cookieController = require('./controllers/cookieController');
-const sessionController = require('./controllers/sessionController');
 
 //must use this to start server
 //sudo service mongodb start
+
+/*
+Technical challenges
+
+getting webpack and express set up to work with the front end
+having trouble getting the development server to work
+keeping track of states and what is happening where in a large application and making sure everything is still working properly
+creating routes to communicate with the database and updating
+user auth to track where to store data, intially started with oauth but had trouble tracking user progress
+*/
 
 // const client_id = process.env.GITHUB_CLIENT_ID;
 // const client_secret = process.env.GITHUB_CLIENT_SECRET;
@@ -67,6 +75,8 @@ app.get('/getStats', userController.getAllUsers, (req,res) => {
 app.put('/updatestats', userController.updateStats, (req, res) => {
   console.log('updated')
 });
+
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))

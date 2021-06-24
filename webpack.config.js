@@ -1,13 +1,22 @@
 const path = require('path');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+console.log('The Process ENV variable', process.env.NODE_ENV);
 
 module.exports = {
     entry: './src/index.js',
+    mode: process.env.NODE_ENV,
+    devServer: {
+        // contentBase: path.resolve(__dirname, '/build'),
+        publicPath: '/',
+        proxy: {
+            '/': 'http://localhost:3000',
+        },
+    },
     output: {
         path: path.join(__dirname, '/build'),
         filename: 'bundle.js',
     },
-    mode: process.env.NODE_ENV,
+
     // plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
@@ -28,14 +37,7 @@ module.exports = {
             },
         ],
     },
-    devServer: {
-        contentBase: path.join(__dirname, '/build'),
-        publicPath: '/build/',
-        hot: true,
-        proxy: {
-            '/': 'http://localhost:3000',
-        },
-    },
+
     resolve: {
         extensions: ['.js', '.jsx'],
       },
