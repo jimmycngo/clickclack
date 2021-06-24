@@ -32,7 +32,7 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_ENV=production webpack",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open --hot\" \"nodemon -r esm -r dotenv/config ./server/server.js\""
   },
