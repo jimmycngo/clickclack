@@ -32,6 +32,13 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 10
 app.use(express.json())
 app.use(express.static(__dirname + '/public'));
 
+app.use((req, res, next) => {
+  if (req.hostname !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
+    return res.redirect(`https://${req.hostname}${req.url}`)
+  }
+  return next()
+})
+
 app.set('view engine', 'ejs');
 
 app.get('/bundle.js', (req, res) => {
