@@ -16,7 +16,6 @@ module.exports = {
         path: path.join(__dirname, '/build'),
         filename: 'bundle.js',
     },
-
     // plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
@@ -26,8 +25,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'], //preset configs for babel
-                        plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+                        presets: ['@babel/preset-env', '@babel/preset-react',], //preset configs for babel
                     },
                 },
             },
